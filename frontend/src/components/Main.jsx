@@ -1,13 +1,11 @@
 // Importing the required libraries
-import axios from 'axios';
-import React, { useEffect } from 'react'
-import {useNavigate} from 'react-router-dom'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 // Exporting the Main component to App component 
-export const Main = ({user}) => {
+export const Main = () => {
 
-  const url = 'http://localhost:5000';
   const navigate = useNavigate();
 
   // LOGOUT FUNCTION
@@ -18,17 +16,17 @@ export const Main = ({user}) => {
   }
 
   // Run after the page is entered 
-  useEffect(()=>{
+  useEffect(() => {
     const username = localStorage.getItem('ls-username');
-    if(!username) {alert('session expired');navigate('/login')}
-    
-  },[])
+    if (!username) { alert('session expired'); navigate('/login') }
+
+  }, [])
 
   // Returing the home page of login security
   return (
     <div>
-        <h1>welcome to login security <br/> Homepage</h1>
-        <button onClick={logout}>Logout</button>
+      <h1>Welcome to Hashed Secrets <br />This is Homepage</h1>
+      <button onClick={logout}>Logout <i className="fa-sharp fa fa-door-closed"></i></button>
     </div>
   )
 }

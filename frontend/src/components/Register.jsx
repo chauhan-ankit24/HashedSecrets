@@ -21,10 +21,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "./Loader";
-import CryptoJS from 'crypto-js';
 import { shuffle } from "../utils/shuffle";
 import checkPassword from "../utils/passCheck";
 import checkUsername from "../utils/userCheck";
+import CryptoJS from 'crypto-js';
 
 // exporting the register component to the App component
 export const Register = ({ SetUser }) => {
@@ -179,7 +179,7 @@ export const Register = ({ SetUser }) => {
           required
         />
         <label id="icon" htmlFor="name">
-          <i className="fas fa-user"></i>
+          <i className="fa fa-envelope"></i>
         </label>
         <input
           className="username"
@@ -190,7 +190,7 @@ export const Register = ({ SetUser }) => {
           required
         />
         <label id="icon" htmlFor="name">
-          <i className="fas fa-unlock-alt"></i>
+          <i className="fa fa-unlock"></i>
         </label>
         <input
           value={password}
@@ -205,7 +205,7 @@ export const Register = ({ SetUser }) => {
           required
         />
         <label id="icon" htmlFor="name">
-          <i className="fas fa-unlock-alt"></i>
+          <i className="fa fa-lock"></i>
         </label>
         <input
           value={confirmpassword}
@@ -234,9 +234,14 @@ export const Register = ({ SetUser }) => {
             {loading ? <Loader /> : "Register"}
           </button>
         </div>
-        <a href="#" onClick={() => navigate("/login")}>
-          login
-        </a>
+        <div className="btn-block">
+          <p >already registered !</p>
+        </div>
+        <div className="btn-block">
+          <a href="#" style={{ "textDecoration": "none" }} onClick={() => navigate("/login")}>
+            login
+          </a>
+        </div>
       </form>
     </div>
   );

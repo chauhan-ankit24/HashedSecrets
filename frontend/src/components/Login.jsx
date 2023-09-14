@@ -17,13 +17,15 @@ password --> hash --> shuffle --> hash --> send to server
 **************************************************************/
 
 // importing the requried libraries //
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "./Loader";
 import { shuffle } from "../utils/shuffle";
 import checkPassword from "../utils/passCheck";
 import checkUsername from "../utils/userCheck";
+import CryptoJS from 'crypto-js';
+
 
 // exporting the login component to the App component
 export const Login = ({ SetUser }) => {
@@ -39,7 +41,7 @@ export const Login = ({ SetUser }) => {
 
   // Hashing function which uses crypto SHA256
   const hash = (value) => {
-    var hash = CryptoJS.SHA256(value);
+    var hash = CryptoJS.SHA256((value));
     var hashString = hash.toString();
     return hashString;
   };
@@ -144,7 +146,7 @@ export const Login = ({ SetUser }) => {
       <form onSubmit={handleSubmit}>
         <hr />
         <label id="icon" htmlFor="name">
-          <i className="fas fa-user"></i>
+        <i className="fa fa-envelope"></i>
         </label>
         <input
           className="username"
@@ -180,9 +182,14 @@ export const Login = ({ SetUser }) => {
         <div className="btn-block">
           <button className="submit">{loading ? <Loader /> : "Login"}</button>
         </div>
-        <a href="#" onClick={() => navigate("/register")}>
-          register
-        </a>
+        <div className="btn-block">
+          <p> don&apos;t have an account ?</p>
+        </div>
+        <div className="btn-block">
+          <a href="#" style={{ "textDecoration": "none" }} onClick={() => navigate("/register")}>
+            signUp
+          </a>
+        </div>
       </form>
     </div>
   );
