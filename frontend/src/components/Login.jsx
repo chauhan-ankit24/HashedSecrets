@@ -37,7 +37,7 @@ export const Login = ({ SetUser }) => {
 
   // getting the current domain ( for hasing and shuffling )
   var currentDomain = window.location.hostname;
-  var url = "http://localhost:5000";
+  var url = "https://hashb.onrender.com";
 
   // Hashing function which uses crypto SHA256
   const hash = (value) => {
